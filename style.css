@@ -193,3 +193,85 @@ a[href^="mailto:"]{cursor:pointer}
 .floating-call svg{width:25px;height:25px;fill:currentColor;flex:0 0 25px}
 .floating-call span{direction:ltr;unicode-bidi:isolate}
 @media(max-width:620px){.floating-contact-group{left:12px;bottom:12px}.floating-call{font-size:14px;padding:0 12px}}
+
+
+/* ===== تحسين قائمة الجوال - 2026-09 ===== */
+.mobile-menu-toggle{
+  display:none;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:1px solid rgba(227,189,114,.55);
+  border-radius:7px;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:5px;
+  flex:0 0 44px;
+}
+.mobile-menu-toggle span{
+  display:block;
+  width:21px;
+  height:2px;
+  border-radius:2px;
+  background:var(--gold2);
+  transition:transform .2s ease,opacity .2s ease;
+}
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+@media(max-width:1000px){
+  .header .nav{position:relative;min-height:72px;gap:12px}
+  .header .brand{min-width:0;flex:1;margin-left:0}
+  .header .brand strong{font-size:clamp(11px,3.2vw,15px);line-height:1.55}
+  .header .brand span{font-size:10px;line-height:1.45}
+  .header .brand-mark{font-size:29px;flex:0 0 auto}
+  .mobile-menu-toggle{display:inline-flex;position:relative;z-index:62}
+  .header .nav-cta{display:none}
+  .header .nav > nav,
+  .header nav{
+    display:none;
+    position:absolute;
+    top:calc(100% + 1px);
+    right:0;
+    left:0;
+    z-index:60;
+    margin:0;
+    padding:10px;
+    background:#061a33;
+    border:1px solid rgba(227,189,114,.35);
+    border-top:0;
+    border-radius:0 0 10px 10px;
+    box-shadow:0 14px 28px rgba(0,0,0,.2);
+    flex-direction:column;
+    gap:0;
+    font-size:14px;
+  }
+  .header .nav > nav.is-open,
+  .header nav.is-open{display:flex}
+  .header nav a{
+    display:block;
+    width:100%;
+    padding:11px 13px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    color:#fff;
+  }
+  .header nav a:last-child{border-bottom:0}
+  .header nav a.active{color:var(--gold2)}
+  .header nav a.btn{
+    margin-top:8px;
+    border-bottom:1px solid var(--gold);
+    color:var(--navy);
+    text-align:center;
+  }
+}
+
+@media(max-width:420px){
+  .header .nav{width:94%}
+  .header .brand-mark{font-size:25px}
+  .mobile-menu-toggle{width:42px;height:42px;flex-basis:42px}
+}

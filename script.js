@@ -216,3 +216,59 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+
+
+
+/* =========================================
+   قائمة التنقل للجوال
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function () {
+  const headerNav = document.querySelector('.header .nav');
+  const navMenu = headerNav ? headerNav.querySelector('nav') : null;
+
+  if (!headerNav || !navMenu) return;
+
+  let menuButton = headerNav.querySelector('.mobile-menu-toggle');
+
+  if (!menuButton) {
+    menuButton = document.createElement('button');
+    menuButton.type = 'button';
+    menuButton.className = 'mobile-menu-toggle';
+    menuButton.setAttribute('aria-label', 'فتح القائمة الرئيسية');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-controls', 'mobile-main-navigation');
+    menuButton.innerHTML = '<span></span><span></span><span></span>';
+
+    if (!navMenu.id) navMenu.id = 'mobile-main-navigation';
+    headerNav.insertBefore(menuButton, navMenu);
+  }
+
+  function closeMenu() {
+    navMenu.classList.remove('is-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'فتح القائمة الرئيسية');
+  }
+
+  menuButton.addEventListener('click', function () {
+    const willOpen = !navMenu.classList.contains('is-open');
+    navMenu.classList.toggle('is-open', willOpen);
+    menuButton.setAttribute('aria-expanded', String(willOpen));
+    menuButton.setAttribute('aria-label', willOpen ? 'إغلاق القائمة الرئيسية' : 'فتح القائمة الرئيسية');
+  });
+
+  navMenu.addEventListener('click', function (event) {
+    if (event.target.closest('a')) closeMenu();
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!headerNav.contains(event.target)) closeMenu();
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1000) closeMenu();
+  });
+});
