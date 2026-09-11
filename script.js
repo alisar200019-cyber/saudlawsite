@@ -272,3 +272,157 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.innerWidth > 1000) closeMenu();
   });
 });
+
+
+/* =========================================
+   طبقة تتبع Google Analytics 4
+   تسجل التفاعلات المهمة دون تغيير واجهة الموقع
+   ========================================= */
+(function () {
+  'use strict';
+
+  const individualServicePages = new Set([
+    'criminal-cases.html',
+    'personal-status-cases.html',
+    'labor-cases.html',
+    'civil-cases.html',
+    'real-estate-cases.html',
+    'administrative-cases.html'
+  ]);
+
+  const corporateServicePages = new Set([
+    'commercial-corporate-law.html',
+    'contracts-agreements.html',
+    'commercial-disputes.html',
+    'corporate-labor-cases.html',
+    'real-estate-construction.html',
+    'corporate-administrative-cases.html',
+    'enforcement-debt-collection.html'
+  ]);
+
+  function currentPageName() {
+    return window.location.pathname.split('/').pop() || 'index.html';
+  }
+
+  function destinationPageName(link) {
+    try {
+      const url = new URL(link.href, window.location.href);
+      return url.pathname.split('/').pop() || 'index.html';
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function cleanLabel(link) {
+    return (
+      link.getAttribute('aria-label') ||
+      link.getAttribute('title') ||
+      link.textContent ||
+      ''
+    ).replace(/\s+/g, ' ').trim().slice(0, 100);
+  }
+
+  function linkArea(link) {
+    if (link.closest('nav')) return 'navigation';
+    if (link.closest('.floating-contact-group')) return 'floating_contact';
+    if (link.closest('footer')) return 'footer';
+    if (link.closest('.hero-actions')) return 'hero';
+    if (link.closest('.final-cta')) return 'final_cta';
+    if (link.closest('.hotspot')) return 'hotspot';
+    return 'content';
+  }
+
+  function sendAnalyticsEvent(eventName, params) {
+    if (typeof window.gtag !== 'function') return;
+
+    window.gtag('event', eventName, Object.assign({
+      page_path: window.location.pathname,
+      page_title: document.title,
+      source_page: currentPageName()
+    }, params || {}));
+  }
+
+  function isConsultationLink(link) {
+    const label = cleanLabel(link);
+    const classes = link.className || '';
+    const href = (link.getAttribute('href') || '').toLowerCase();
+
+    return (
+      href.includes('contact.html') &&
+      (
+        /استشار/.test(label) ||
+        /استشار/.test(link.textContent || '') ||
+        /nav-cta|book-top/.test(classes)
+      )
+    );
+  }
+
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    const rawHref = (link.getAttribute('href') || '').trim();
+    const hrefLower = rawHref.toLowerCase();
+    const label = cleanLabel(link);
+    const area = linkArea(link);
+    const destination = destinationPageName(link);
+
+    const common = {
+      link_text: label,
+      link_url: link.href,
+      link_area: area,
+      destination_page: destination
+    };
+
+    if (
+      hrefLower.startsWith('https://wa.me/') ||
+      hrefLower.startsWith('http://wa.me/') ||
+      hrefLower.includes('api.whatsapp.com')
+    ) {
+      sendAnalyticsEvent('whatsapp_click', common);
+      return;
+    }
+
+    if (hrefLower.startsWith('tel:')) {
+      sendAnalyticsEvent('phone_click', common);
+      return;
+    }
+
+    if (hrefLower.startsWith('mailto:')) {
+      sendAnalyticsEvent('email_click', common);
+      return;
+    }
+
+    if (isConsultationLink(link)) {
+      sendAnalyticsEvent('consultation_click', common);
+      return;
+    }
+
+    if (individualServicePages.has(destination)) {
+      sendAnalyticsEvent('individual_service_click', common);
+      return;
+    }
+
+    if (corporateServicePages.has(destination)) {
+      sendAnalyticsEvent('corporate_service_click', common);
+      return;
+    }
+
+    if (/^article-.*\.html$/i.test(destination)) {
+      sendAnalyticsEvent('article_click', common);
+      return;
+    }
+
+    if (link.closest('nav')) {
+      sendAnalyticsEvent('navigation_click', common);
+    }
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (currentPageName() === 'contact.html') {
+      sendAnalyticsEvent('contact_page_view', {
+        page_section: 'contact'
+      });
+    }
+  });
+})();
