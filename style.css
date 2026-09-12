@@ -570,7 +570,7 @@ main > .page-hero .container{
     font-size: 15px;
     line-height: 1.5;
     padding-left: 40px;
-    animation: office-name-scroll 12s linear infinite;
+    animation: office-name-scroll 9s linear infinite;
   }
 
   @keyframes office-name-scroll {
