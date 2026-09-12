@@ -426,3 +426,55 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 })();
+/* =========================================
+   شريط التنقل السريع أسفل الجوال
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function () {
+  if (document.querySelector('.mobile-bottom-nav')) return;
+
+  const mobileNav = document.createElement('nav');
+  mobileNav.className = 'mobile-bottom-nav';
+  mobileNav.setAttribute('aria-label', 'التنقل السريع للجوال');
+
+  mobileNav.innerHTML = `
+    <a href="index.html" aria-label="الرئيسية">
+      <span class="mobile-bottom-icon">⌂</span>
+      <span>الرئيسية</span>
+    </a>
+
+    <a href="services.html" aria-label="الخدمات">
+      <span class="mobile-bottom-icon">⚖</span>
+      <span>الخدمات</span>
+    </a>
+
+    <a class="mobile-bottom-whatsapp"
+       href="https://wa.me/966557776043"
+       target="_blank"
+       rel="noopener"
+       aria-label="واتساب">
+      <span class="mobile-bottom-icon">●</span>
+      <span>واتساب</span>
+    </a>
+
+    <a href="tel:+966557776043" aria-label="اتصال مباشر">
+      <span class="mobile-bottom-icon">☎</span>
+      <span>اتصال</span>
+    </a>
+  `;
+
+  document.body.appendChild(mobileNav);
+
+  const currentPage =
+    window.location.pathname.split('/').pop() || 'index.html';
+
+  mobileNav.querySelectorAll('a').forEach(function (link) {
+    const href = link.getAttribute('href');
+
+    if (
+      href === currentPage ||
+      (currentPage === '' && href === 'index.html')
+    ) {
+      link.classList.add('active');
+    }
+  });
+});
