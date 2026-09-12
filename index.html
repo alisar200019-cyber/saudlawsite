@@ -28,16 +28,27 @@
 <section class="section"><div class="container"><div class="section-head"><span>المعرفة القانونية</span><h2>أحدث المقالات</h2></div><div class="articles"><article class="article"><small>مقال قانوني</small><h3>ما هي إجراءات رفع الدعوى في السعودية؟</h3><p class="muted">دليل توعوي مبسط حول المراحل الأساسية.</p><a href="article-lawsuit.html">اقرأ المزيد ←</a></article><article class="article"><small>مقال قانوني</small><h3>حقوق الموظف في نظام العمل السعودي</h3><p class="muted">نظرة عامة على أبرز الحقوق والالتزامات.</p><a href="article-labor.html">اقرأ المزيد ←</a></article><article class="article"><small>مقال قانوني</small><h3>أهمية مراجعة العقود قبل التوقيع</h3><p class="muted">كيف تقلل المراجعة القانونية من المخاطر؟</p><a href="article-contracts.html">اقرأ المزيد ←</a></article></div></div></section></main>
 <section class="home-final-cta" aria-labelledby="final-consultation-title"><div class="container"><h2 id="final-consultation-title">هل تحتاج إلى استشارة قانونية؟</h2><p>تواصل مع مكتب المحامي سعود صالح العنزي للمحاماة والاستشارات القانونية لدراسة موضوعك وتحديد الخدمة القانونية المناسبة.</p><div class="actions"><a class="btn primary" href="contact.html">احجز استشارتك</a></div></div></section>
 
-<footer class="footer"><div class="container footer-grid"><div><strong>المحامي سعود صالح العنزي</strong><small>للمحاماة والاستشارات القانونية</small></div><div>المملكة العربية السعودية</div><div><br><a href="mailto:office.lawyersaud@gmail.com" aria-label="البريد الإلكتروني">office.lawyersaud@gmail.com</a></div></div><div class="container legal">© <span id="year"></span> المحامي سعود صالح العنزي — جميع الحقوق محفوظة</div></footer><script src="script.js"></script><script>
-  <button class="back-to-top" id="backToTop" type="button" aria-label="العودة إلى أعلى الصفحة" title="العودة إلى أعلى الصفحة">↑</button>
-(function(){
-  const btn=document.getElementById('backToTop');
-  if(!btn)return;
-  const toggle=()=>btn.classList.toggle('is-visible',window.scrollY>450);
-  window.addEventListener('scroll',toggle,{passive:true});
-  toggle();
-  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-})();
+<footer class="footer"><div class="container footer-grid"><div><strong>المحامي سعود صالح العنزي</strong><small>للمحاماة والاستشارات القانونية</small></div><div>المملكة العربية السعودية</div><div><br><a href="mailto:office.lawyersaud@gmail.com" aria-label="البريد الإلكتروني">office.lawyersaud@gmail.com</a></div></div><div class="container legal">© <span id="year"></span> المحامي سعود صالح العنزي — جميع الحقوق محفوظة</div></footer>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="العودة إلى أعلى الصفحة" title="العودة إلى أعلى الصفحة">↑</button>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  const updateBackToTop = () => {
+    btn.classList.toggle('is-visible', window.scrollY > 450);
+  };
+
+  window.addEventListener('scroll', updateBackToTop, { passive: true });
+  updateBackToTop();
+
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
 </script>
 
 
