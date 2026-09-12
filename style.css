@@ -432,3 +432,19 @@ body:not(.home) .notice{
     font-size:27px;
   }
 }
+/* ===== تقليل ارتفاع رأس الصفحات الداخلية فقط ===== */
+main > .page-hero{
+    padding-top:55px;
+    padding-bottom:55px;
+}
+
+main > .page-hero .container{
+    min-height:0;
+}
+
+@media(max-width:620px){
+    main > .page-hero{
+        padding-top:42px;
+        padding-bottom:42px;
+    }
+}
