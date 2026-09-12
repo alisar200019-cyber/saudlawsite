@@ -522,9 +522,4 @@ main > .page-hero .container{
     bottom:82px;
   }
 }
-/* ===== إخفاء أزرار التواصل العائمة على الجوال ===== */
-@media (max-width: 620px) {
-  .floating-contact-group {
-    display: none !important;
-  }
-}
+
