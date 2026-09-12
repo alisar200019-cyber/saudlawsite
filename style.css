@@ -522,4 +522,29 @@ main > .page-hero .container{
     bottom:82px;
   }
 }
+/* ===== تحسين المساحة السفلية وزر احجز استشارتك على الجوال ===== */
+@media (max-width: 620px) {
 
+  /* مساحة إضافية حتى لا يغطي الشريط السفلي آخر المحتوى */
+  body {
+    padding-bottom: 110px !important;
+  }
+
+  /* تصغير زر احجز استشارتك */
+  .btn,
+  .nav-cta {
+    padding: 9px 16px;
+    font-size: 14px;
+    min-height: 42px;
+  }
+
+  /* أزرار منطقة الإجراءات */
+  .actions {
+    gap: 9px;
+  }
+
+  .actions .btn {
+    width: auto;
+    max-width: 190px;
+  }
+}
