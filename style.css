@@ -548,3 +548,38 @@ main > .page-hero .container{
     max-width: 190px;
   }
 }
+/* ===== شريط اسم المكتب المتحرك على الجوال ===== */
+@media (max-width: 620px) {
+
+  .header .brand {
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .header .brand > div:last-child {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .header .brand strong {
+    display: inline-block;
+    width: max-content;
+    white-space: nowrap;
+    font-size: 15px;
+    line-height: 1.5;
+    padding-left: 40px;
+    animation: office-name-scroll 12s linear infinite;
+  }
+
+  @keyframes office-name-scroll {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
