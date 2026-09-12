@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
 :root{--navy:#061a33;--navy2:#0b2b4d;--gold:#c89a45;--gold2:#e3bd72;--ink:#14243a;--muted:#66758a;--light:#f5f7fa;--line:#e3e8ee;--white:#fff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Cairo,Arial,sans-serif;color:var(--ink);line-height:1.9;background:#fff}a{text-decoration:none;color:inherit}.container{width:min(1180px,92%);margin:auto}.header{position:sticky;top:0;z-index:50;background:rgba(6,26,51,.98);color:#fff;border-bottom:1px solid rgba(227,189,114,.4)}.nav{min-height:78px;display:flex;align-items:center;gap:24px}.brand{display:flex;align-items:center;gap:10px;margin-left:auto}.brand-mark{font-size:36px;color:var(--gold2);line-height:1}.brand strong,.brand span{display:block}.brand strong{font-size:16px}.brand span{font-size:11px;color:var(--gold2)}nav{display:flex;gap:19px;font-size:13px}nav a{transition:.2s}nav a:hover,nav a.active{color:var(--gold2)}.nav-cta,.btn{
     display:inline-flex;
@@ -275,3 +274,23 @@ a[href^="mailto:"]{cursor:pointer}
   .header .brand-mark{font-size:25px}
   .mobile-menu-toggle{width:42px;height:42px;flex-basis:42px}
 }
+
+
+/* ===== تحسينات PageSpeed مع الحفاظ على الواجهة الرئيسية ===== */
+/* حجم متوازن لعنوان الواجهة على الجوال */
+@media(max-width:620px){
+  .hero h1{font-size:clamp(27px,8vw,36px);line-height:1.45;margin:8px auto 12px}
+  .hero-grid{padding:42px 0 52px}
+}
+
+/* دعوة الاستشارة الختامية في الصفحة الرئيسية */
+.home-final-cta{background:linear-gradient(115deg,#06182e,#0d3155);color:#fff;padding:58px 0;text-align:center;border-top:1px solid rgba(227,189,114,.35)}
+.home-final-cta h2{margin:0 0 10px;color:#fff;font-size:clamp(26px,3vw,36px)}
+.home-final-cta p{margin:0 auto 22px;max-width:720px;color:#dce4ed;font-size:15px}
+.home-final-cta .actions{justify-content:center;margin-top:0}
+
+/* زر العودة إلى أعلى الصفحة */
+.back-to-top{position:fixed;right:20px;bottom:20px;z-index:9998;width:48px;height:48px;border:1px solid rgba(227,189,114,.7);border-radius:50%;background:#061a33;color:#e3bd72;display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.18);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
+.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top:hover{background:#0b2b4d}
+@media(max-width:620px){.back-to-top{right:12px;bottom:12px;width:46px;height:46px}}
