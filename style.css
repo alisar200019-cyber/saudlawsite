@@ -583,3 +583,27 @@ main > .page-hero .container{
     }
   }
 }
+/* ===== تصغير شريط التنقل السفلي على الجوال ===== */
+@media (max-width: 620px) {
+
+  .mobile-bottom-nav {
+    min-height: 54px !important;
+    padding: 4px 6px calc(4px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .mobile-bottom-nav a {
+    min-height: 44px !important;
+    font-size: 10px !important;
+    gap: 1px !important;
+    padding: 2px !important;
+  }
+
+  .mobile-bottom-nav .mobile-bottom-icon {
+    font-size: 18px !important;
+  }
+
+  /* تعديل المسافة أسفل الصفحة لتتناسب مع الحجم الجديد */
+  body {
+    padding-bottom: 90px !important;
+  }
+}
