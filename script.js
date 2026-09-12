@@ -426,6 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 })();
+
 /* =========================================
    شريط التنقل السريع أسفل الجوال
    ========================================= */
@@ -441,12 +442,10 @@ document.addEventListener('DOMContentLoaded', function () {
       <span class="mobile-bottom-icon">⌂</span>
       <span>الرئيسية</span>
     </a>
-
     <a href="services.html" aria-label="الخدمات">
       <span class="mobile-bottom-icon">⚖</span>
       <span>الخدمات</span>
     </a>
-
     <a class="mobile-bottom-whatsapp"
        href="https://wa.me/966557776043"
        target="_blank"
@@ -455,7 +454,6 @@ document.addEventListener('DOMContentLoaded', function () {
       <span class="mobile-bottom-icon">●</span>
       <span>واتساب</span>
     </a>
-
     <a href="tel:+966557776043" aria-label="اتصال مباشر">
       <span class="mobile-bottom-icon">☎</span>
       <span>اتصال</span>
@@ -464,16 +462,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.body.appendChild(mobileNav);
 
-  const currentPage =
-    window.location.pathname.split('/').pop() || 'index.html';
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
   mobileNav.querySelectorAll('a').forEach(function (link) {
     const href = link.getAttribute('href');
-
-    if (
-      href === currentPage ||
-      (currentPage === '' && href === 'index.html')
-    ) {
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
       link.classList.add('active');
     }
   });
