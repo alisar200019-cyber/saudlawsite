@@ -579,10 +579,10 @@ main > .page-hero .container{
   .header .brand strong::after {
     content: "مكتب المحامي سعود صالح العنزي للمحاماة والاستشارات القانونية";
     position: absolute;
-    right: 100%;
+    right: calc(100% + 24px);
     top: 0;
     white-space: nowrap;
-    padding-left: 36px;
+    padding-left: 0;
   }
 
   @keyframes office-name-scroll {
