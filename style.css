@@ -564,24 +564,34 @@ main > .page-hero .container{
   }
 
   .header .brand strong {
+    position: relative;
     display: inline-block;
     width: max-content;
     white-space: nowrap;
     font-size: 15px;
     line-height: 1.5;
-    padding-left: 40px;
-    animation: office-name-scroll 7s linear infinite;
+    padding: 0;
+    animation: office-name-scroll 9s linear infinite;
     will-change: transform;
-    transform: translate3d(-10%,0,0);
+  }
+
+  /* نسخة ثانية من الاسم تجعل الحركة مستمرة لليسار بلا رجوع أو فراغ */
+  .header .brand strong::after {
+    content: "مكتب المحامي سعود صالح العنزي للمحاماة والاستشارات القانونية";
+    position: absolute;
+    left: 100%;
+    top: 0;
+    white-space: nowrap;
+    padding-right: 36px;
   }
 
   @keyframes office-name-scroll {
-    0% {
+    from {
       transform: translate3d(0,0,0);
     }
 
-    100% {
-      transform: translate3d(-10%,0,0);
+    to {
+      transform: translate3d(-100%,0,0);
     }
   }
 }
