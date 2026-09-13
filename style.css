@@ -636,3 +636,6 @@ main > .page-hero .container{
   .home-page .hero-art{height:300px;min-height:300px;max-height:300px;}
   .home-page .hero-art img{height:300px;min-height:300px;max-height:300px;}
 }
+
+/* Unified typography across all pages */
+html,body,button,input,select,textarea{font-family:Cairo,Arial,sans-serif}
