@@ -570,18 +570,18 @@ main > .page-hero .container{
     font-size: 15px;
     line-height: 1.5;
     padding-left: 40px;
-    animation: office-name-scroll 5s linear infinite;
+    animation: office-name-scroll 6s ease-in-out infinite alternate;
     will-change: transform;
-    transform: translateZ(0);
+    transform: translate3d(-22%,0,0);
   }
 
   @keyframes office-name-scroll {
     0% {
-      transform: translate3d(-100%,0,0);
+      transform: translate3d(-22%,0,0);
     }
 
     100% {
-      transform: translate3d(100%,0,0);
+      transform: translate3d(22%,0,0);
     }
   }
 }
