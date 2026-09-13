@@ -474,12 +474,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* =========================================
-   زر العودة للأعلى - تحديث مخفف أثناء التمرير
-   يستخدم requestAnimationFrame لتقليل إعادة الحساب المتكرر.
+   زر العودة للأعلى - يعمل في جميع صفحات الموقع
+   ينشئ الزر تلقائياً إذا لم يكن موجوداً ثم يفعّله.
    ========================================= */
 document.addEventListener('DOMContentLoaded', function () {
-  const btn = document.getElementById('backToTop');
-  if (!btn) return;
+  let btn = document.getElementById('backToTop');
+
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.className = 'back-to-top';
+    btn.id = 'backToTop';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'العودة إلى أعلى الصفحة');
+    btn.setAttribute('title', 'العودة إلى أعلى الصفحة');
+    btn.textContent = '↑';
+    document.body.appendChild(btn);
+  }
 
   let ticking = false;
 
