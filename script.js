@@ -471,3 +471,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+
+/* =========================================
+   زر العودة للأعلى - تحديث مخفف أثناء التمرير
+   يستخدم requestAnimationFrame لتقليل إعادة الحساب المتكرر.
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  let ticking = false;
+
+  function updateBackToTop() {
+    btn.classList.toggle('is-visible', window.pageYOffset > 450);
+    ticking = false;
+  }
+
+  function requestBackToTopUpdate() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateBackToTop);
+  }
+
+  window.addEventListener('scroll', requestBackToTopUpdate, { passive: true });
+  updateBackToTop();
+
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});

@@ -607,3 +607,19 @@ main > .page-hero .container{
     padding-bottom: 90px !important;
   }
 }
+
+
+/* ===== تحسينات أداء آمنة للصفحة الرئيسية - 2026-09 =====
+   لا تغيّر التصميم أو الحركة أو روابط Google/SEO. */
+.home-page .hero-art img{
+  aspect-ratio:1008/822;
+}
+
+/* تأجيل رسم الأقسام الموجودة أسفل الجزء الظاهر من الصفحة حتى الاقتراب منها.
+   يقلل عمل الرسم الأولي من دون حذف أي محتوى أو التأثير في الفهرسة. */
+.home-page main > .section,
+.home-page .home-final-cta,
+.home-page .footer{
+  content-visibility:auto;
+  contain-intrinsic-size:1px 700px;
+}
