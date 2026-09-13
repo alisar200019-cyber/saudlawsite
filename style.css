@@ -291,7 +291,7 @@ a[href^="mailto:"]{cursor:pointer}
 
 /* زر العودة إلى أعلى الصفحة */
 .back-to-top{position:fixed;right:20px;bottom:20px;z-index:9998;width:48px;height:48px;border:1px solid rgba(227,189,114,.7);border-radius:50%;background:#061a33;color:#e3bd72;display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.18);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
-.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
 .back-to-top:hover{background:#0b2b4d}
 @media(max-width:620px){.back-to-top{right:12px;bottom:12px;width:46px;height:46px}}
 /* ===== تحسين موحد للصفحات الداخلية ===== */

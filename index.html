@@ -38,6 +38,7 @@
 @media(max-width:620px){body{padding-bottom:90px}.header .nav{position:relative;min-height:72px;gap:12px;width:94%}.header .brand{overflow:hidden;flex:1;min-width:0;margin-left:0}.header .brand>div:last-child{width:100%;overflow:hidden;white-space:nowrap}.header .brand strong{display:inline-block;width:max-content;white-space:nowrap;font-size:15px;line-height:1.5;padding-left:40px;animation:office-name-scroll 5s linear infinite;will-change:transform;transform:translateZ(0)}.header .brand-mark{font-size:25px;flex:0 0 auto}.header .nav-cta{display:none}.hero-grid{padding:42px 0 52px;min-height:650px}.hero h1{font-size:clamp(27px,8vw,36px);line-height:1.45;margin:8px auto 12px}.hero-art{height:300px;min-height:300px}.hero-art img{min-height:300px}.btn{padding:9px 16px;font-size:14px;min-height:42px}.actions{gap:9px}.actions .btn{width:auto;max-width:190px}@keyframes office-name-scroll{0%{transform:translate3d(-100%,0,0)}100%{transform:translate3d(100%,0,0)}}}
 /* Reserve/fix floating controls before deferred stylesheet arrives to avoid layout shifts. */
 .back-to-top{position:fixed;right:20px;bottom:20px;z-index:9998;width:48px;height:48px;opacity:0;visibility:hidden;pointer-events:none}
+.back-to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto}
 .floating-contact-group{position:fixed;left:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px}
 .floating-contact-group a{box-sizing:border-box}
 @media(max-width:620px){.floating-contact-group{left:12px;bottom:12px}.back-to-top{right:12px;bottom:82px}}
