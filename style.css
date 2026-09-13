@@ -625,3 +625,14 @@ main > .page-hero .container{
   content-visibility:auto;
   contain-intrinsic-size:1px 700px;
 }
+
+
+/* ===== V4: LCP + CLS stabilization, 2026-09 ===== */
+.home-page .hero{contain:paint;}
+.home-page .hero-art{contain:layout paint;isolation:isolate;}
+.home-page .hero-art img{transform:translateZ(0);backface-visibility:hidden;}
+@media(max-width:620px){
+  .home-page .hero-grid{grid-template-rows:auto 300px;}
+  .home-page .hero-art{height:300px;min-height:300px;max-height:300px;}
+  .home-page .hero-art img{height:300px;min-height:300px;max-height:300px;}
+}
