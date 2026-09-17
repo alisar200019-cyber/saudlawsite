@@ -33,5 +33,9 @@
   <url><loc>https://www.alanzilaw.com/contact.html</loc></url>
   <url><loc>https://www.alanzilaw.com/lawyer-saudi-arabia.html</loc></url>
   <url><loc>https://www.alanzilaw.com/legal-consultation-saudi-arabia.html</loc></url>
-
+<url>
+  <loc>https://www.alanzilaw.com/medical-malpractice-lawyer-healthcare-practitioners.html</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
 </urlset>
