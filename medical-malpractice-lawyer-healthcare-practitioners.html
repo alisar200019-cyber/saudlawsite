@@ -95,28 +95,31 @@
   </div>
   <div class="mobile-bar"><a href="contact.html?request=case-review&amp;service=medical-malpractice">دراسة القضية</a><a href="contact.html?request=consultation&amp;service=medical-malpractice">استشارة قانونية</a></div>
   <script>
-    document.addEventListener('click', function (event) {
-      var link = event.target.closest('a');
-      if (!link || typeof gtag !== 'function') return;
+    (function () {
+      var trackedLinks = [
+        ['a[href*="wa.me/"]', 'contact_whatsapp'],
+        ['a[href^="tel:"]', 'contact_phone'],
+        ['a[href*="request=case-review"]', 'request_case_review'],
+        ['a[href*="request=representation"]', 'request_legal_representation'],
+        ['a[href*="request=consultation"]', 'request_legal_consultation'],
+        ['a[href*="services.html#healthcare-services"]', 'back_to_healthcare_services']
+      ];
 
-      var href = link.getAttribute('href') || '';
-      var eventName = '';
-
-      if (href.indexOf('wa.me/') !== -1) eventName = 'contact_whatsapp';
-      else if (href.indexOf('tel:') === 0) eventName = 'contact_phone';
-      else if (href.indexOf('request=case-review') !== -1) eventName = 'request_case_review';
-      else if (href.indexOf('request=representation') !== -1) eventName = 'request_legal_representation';
-      else if (href.indexOf('request=consultation') !== -1) eventName = 'request_legal_consultation';
-      else if (href.indexOf('services.html#healthcare-services') !== -1) eventName = 'back_to_healthcare_services';
-
-      if (eventName) {
-        gtag('event', eventName, {
-          page_type: 'medical_malpractice_landing_page',
-          link_url: link.href,
-          link_text: (link.textContent || link.getAttribute('aria-label') || '').trim()
+      trackedLinks.forEach(function (item) {
+        document.querySelectorAll(item[0]).forEach(function (link) {
+          link.addEventListener('click', function () {
+            if (typeof gtag !== 'function') return;
+            gtag('event', item[1], {
+              send_to: 'G-1EJD5PD6SZ',
+              transport_type: 'beacon',
+              page_type: 'medical_malpractice_landing_page',
+              link_url: link.href,
+              link_text: (link.textContent || link.getAttribute('aria-label') || '').trim()
+            });
+          });
         });
-      }
-    });
+      });
+    }());
   </script>
 </body>
 </html>
